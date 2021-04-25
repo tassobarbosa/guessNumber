@@ -5,6 +5,7 @@ import Card from '../components/Card';
 import Colors from '../constants/colors';
 import NumberContainer from '../components/NumberContainer';
 import Input from '../components/Input';
+import TitleText from '../components/TitleText';
 
 const StartGameScreen = props => {
     const [enteredValue, setEnteredValue] = useState('');
@@ -51,7 +52,7 @@ const StartGameScreen = props => {
     return (
         <TouchableWithoutFeedback onPress={()=>{Keyboard.dismiss();}}>
         <View style={styles.screen}>
-            <Text style={styles.title}>Comece um Novo Jogo!</Text>
+            <TitleText>Comece um Novo Jogo!</TitleText>
             <Card style={styles.inputContainer}>
                 <Text>Digite um número</Text>
                 <Input 
@@ -80,10 +81,6 @@ const styles = StyleSheet.create({
         flex:1,
         padding: 10,
         alignItems: 'center'
-    },
-    title:{
-        fontSize: 20,
-        marginVertical: 10
     },
     inputContainer:{
         width: 300,
