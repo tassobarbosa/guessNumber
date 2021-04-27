@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <Header title="Guess a Number" />
+      <Header title="Descubra o número" />
       {content}
     </View>
   );
