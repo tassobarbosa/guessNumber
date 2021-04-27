@@ -18,6 +18,13 @@ const generateRandomBetween = (min, max, exclude) => {
     }
 }
 
+const renderListItem = (value, numOfRound) => (
+    <View key={value} style={styles.listItem}>
+        <Text>#{numOfRound}</Text>
+        <Text>{value}</Text>
+    </View>
+);
+
 const GameScreen = props => {
     const initialGuess = generateRandomBetween(1, 100, props.userChoice);
     const [currentGuess, setCurrentGuess] = useState(initialGuess);
@@ -68,12 +75,11 @@ const GameScreen = props => {
                     <Icon name='add'/>
                 </PrimaryButton>
             </Card>
-            <ScrollView>
-                {pastGuesses.map(guess => 
-                    <View key={guess}>
-                        <Text>{guess}</Text>
-                    </View>)}
-            </ScrollView>
+            <View style={styles.listContainer}>
+                <ScrollView contentContainerStyle={styles.list}> 
+                    {pastGuesses.map((guess,index) => renderListItem(guess, pastGuesses.length - index))}
+                </ScrollView>
+            </View>
         </View>
     );
 };
@@ -90,6 +96,23 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width: 400,
         maxWidth: '90%'
+    },
+    list:{
+        alignItems: 'center'
+    },
+    listItem:{
+        borderColor: '#ccc',
+        borderWidth: 1,
+        padding: 15,
+        marginVertical: 10,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '60%'
+    },
+    listContainer:{
+        width: '80%',
+        flex: 1
     }
 
 });
